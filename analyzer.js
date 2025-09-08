@@ -1,12 +1,16 @@
 "use strict";
 
-const FS_ROOT = __dirname;
-const RECURSIVE = true;
+// Константы: путь к директории и искомая подстрока (регистронезависимая)
+const FS_ROOT = __dirname; // текущая папка со скриптом
+const RECURSIVE = true; // включить рекурсивный обход подпапок
 const SEARCH_SUBSTRING = 'lorem';
 
 const fs = require('fs');
 const path = require('path');
 
+/**
+ * Возвращает список файлов .html/.htm в директории (при необходимости рекурсивно).
+ */
 function listHtmlFiles(dir, recursive = RECURSIVE) {
 	const entries = fs.readdirSync(dir, { withFileTypes: true });
 	const files = [];
@@ -23,6 +27,9 @@ function listHtmlFiles(dir, recursive = RECURSIVE) {
 	return files;
 }
 
+/**
+ * Считает количество <p>...</p> с искомой подстрокой (без учета регистра).
+ */
 function countParagraphsWithSubstring(html, substr) {
 	const paragraphRegex = /<\s*p\b[^>]*>([\s\S]*?)<\/\s*p\s*>/gi;
 	const substrLower = substr.toLowerCase();

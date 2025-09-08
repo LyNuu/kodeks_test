@@ -1,5 +1,9 @@
 "use strict";
 
+/**
+ * Ищет два разных числа из массива уникальных целых, сумма которых равна targetSum.
+ * Возвращает [a, b] или [] если пары нет. Время O(n), память O(n).
+ */
 function twoSumUnique(array, targetSum) {
 	const seen = new Set();
 	for (let i = 0; i < array.length; i++) {

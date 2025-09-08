@@ -1,5 +1,8 @@
 "use strict";
 
+/**
+ * Версия исходной функции на Promise. Резолвит массив значений в порядке срабатывания таймеров.
+ */
 function funcPromise(arr) {
 	return new Promise((resolve, reject) => {
 		if (!Array.isArray(arr) || arr.some(it => !Number.isInteger(it) || it < 0)) {
@@ -19,6 +22,9 @@ function funcPromise(arr) {
 	});
 }
 
+/**
+ * Обёртка с async/await.
+ */
 async function funcAsync(arr) {
 	return await funcPromise(arr);
 }
