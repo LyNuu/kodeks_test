@@ -5,11 +5,11 @@ LEFT JOIN dep_names n ON n.department_id = d.id
 WHERE n.id IS NULL;
 
 -- Альтернатива через NOT EXISTS
-SELECT d.id
-FROM departments d
-WHERE NOT EXISTS (
-SELECT 1 FROM dep_names n WHERE n.department_id = d.id
-);
+-- SELECT d.id
+-- FROM departments d
+-- WHERE NOT EXISTS (
+--   SELECT 1 FROM dep_names n WHERE n.department_id = d.id
+-- );
 
 -- 1.2 departments.id, у которых 2 и более названий
 SELECT d.id
@@ -28,3 +28,5 @@ LEFT JOIN LATERAL (
   ORDER BY id
   LIMIT 1
 ) n ON TRUE;
+
+

@@ -1,40 +1,54 @@
-# Тестовое задание — Кодекс
+# Тестовое задание — Консорциум Кодекс
 
 ## Структура
-- `sql_queries.sql` — SQL-запросы по пунктам 1.1–1.3.
-- `db_schema.sql` — DDL-схема БД для объектов/контактов/пользователей/адресов.
-- `is_perfect_square.js` — функция проверки идеального квадрата без Math.*.
-- `two_sum.js` — функция поиска пары чисел по целевой сумме.
-- `async_timeouts.js` — переписанная на Promise/async функция из задания 5.
-- `analyzer.js` — CLI-скрипт анализа HTML-файлов по пункту 6.
+```
+kodeks_test/
+  src/
+    analyzer.js           # CLI-скрипт анализа HTML (п.6)
+    async_timeouts.js     # Promise/async версия функции (п.5*)
+    is_perfect_square.js  # проверка идеального квадрата без Math.* (п.3)
+    two_sum.js            # поиск пары по сумме (п.4)
+  db/
+    schema/
+      db_schema.sql      # DDL-схема БД (п.2)
+    queries/
+      sql_queries.sql    # SQL-запросы 1.1–1.3 (п.1)
+  samples/
+    test.html
+    inner/
+      nested.html
+  .gitignore
+  README.md
+```
 
 ## Требования
 - Node.js LTS (или актуальная версия)
 
 ## Запуск скрипта анализа HTML
-1. Поместите HTML-файлы в корневую папку проекта или её подпапки.
-2. Запустите из корня проекта:
+1. HTML-файлы лежат в `samples/` (можно добавлять подпапки).
+2. Запуск из корня рабочего пространства:
    ```powershell
-   node analyzer.js
+   node .\kodeks_test\src\analyzer.js
    ```
-3. Настройки:
+3. Настройки в `src/analyzer.js`:
+   - `FS_ROOT` указывает на `samples/`.
    - `SEARCH_SUBSTRING` — искомая подстрока (регистронезависимая).
-   - Поиск выполняется рекурсивно, начиная с папки, где лежит `analyzer.js`.
 
 ## Примеры использования модулей
+Примеры (PowerShell):
 - Проверка квадрата:
-  ```bash
-  node -e "console.log(require('./is_perfect_square').isPerfectSquare(49))"
+  ```powershell
+  node -e "console.log(require('./src/is_perfect_square').isPerfectSquare(49))"
   ```
 - Поиск пары по сумме:
-  ```bash
-  node -e "console.log(require('./two_sum').twoSumUnique([3,5,-4,8,11,1,-1,6], 10))"
+  ```powershell
+  node -e "console.log(require('./src/two_sum').twoSumUnique([3,5,-4,8,11,1,-1,6], 10))"
   ```
 - Async-функция (Promise):
-  ```bash
-  node -e "require('./async_timeouts').funcPromise([10,5,0]).then(console.log).catch(console.error)"
+  ```powershell
+  node -e "require('./src/async_timeouts').funcPromise([10,5,0]).then(console.log).catch(console.error)"
   ```
 
 ## SQL
-- Импортируйте `sql_queries.sql` в ваш клиент БД для выполнения запросов.
-- `db_schema.sql` содержит таблицы и индексы.
+- Импортируйте `db/queries/sql_queries.sql` в ваш клиент БД для выполнения запросов 1.1–1.3.
+- `db/schema/db_schema.sql` содержит таблицы и индексы.

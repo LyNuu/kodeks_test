@@ -34,3 +34,5 @@ CREATE TABLE addresses (
 );
 
 CREATE INDEX idx_addresses_object_id ON addresses(object_id);
+
+
