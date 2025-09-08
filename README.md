@@ -1,4 +1,4 @@
-# Тестовое задание — Консорциум Кодекс
+# Тестовое задание — Кодекс
 
 ## Структура
 ```
@@ -26,16 +26,24 @@ kodeks_test/
 
 ## Запуск скрипта анализа HTML
 1. HTML-файлы лежат в `samples/` (можно добавлять подпапки).
-2. Запуск из корня рабочего пространства:
+2. Перейдите в папку проекта:
+   ```powershell
+   cd .\kodeks_test
+   ```
+3. Запустите анализатор:
+   ```powershell
+   node .\src\analyzer.js
+   ```
+4. Альтернатива: из родительской папки (без `cd`):
    ```powershell
    node .\kodeks_test\src\analyzer.js
    ```
-3. Настройки в `src/analyzer.js`:
+5. Настройки в `src/analyzer.js`:
    - `FS_ROOT` указывает на `samples/`.
    - `SEARCH_SUBSTRING` — искомая подстрока (регистронезависимая).
 
 ## Примеры использования модулей
-Примеры (PowerShell):
+Примеры (выполняйте из папки `kodeks_test`, PowerShell):
 - Проверка квадрата:
   ```powershell
   node -e "console.log(require('./src/is_perfect_square').isPerfectSquare(49))"

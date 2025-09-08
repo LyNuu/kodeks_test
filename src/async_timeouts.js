@@ -32,3 +32,4 @@ async function funcAsync(arr) {
 module.exports = { funcPromise, funcAsync };
 
 
+
